@@ -57,6 +57,44 @@ ticket("Karim Abdul", "Need a driver update", "low")
 
 priorityHigh();
 
+
+//Task 5: Additional Challenge – Inline Editing of Support Tickets
+
+function edit(ticketdiv, customerName, issueDescription, priorityLevel){
+
+    const editName = document.createElement("input");
+    editName.setAttribute("type", "text");
+    editName.value = customerName.textContent;
+
+    const editIssue = document.createElement("input");
+    editIssue.setAttribute("type", "text");
+    editIssue.value = `Issue: ${issueDescription.textContent}`;
+
+    const editPriority = document.createElement("input");
+    editPriority.setAttribute("type", "text");
+    editPriority.value = `Prioriry: ${priorityLevel.textContent}`;
+
+    
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save";
+
+    ticketdiv.replaceChild(editName, customerName);
+    ticketdiv.replaceChild(editIssue, issueDescription);
+    ticketdiv.replaceChild(editPriority, priorityLevel);
+    ticketdiv.replaceChild(saveButton, editButton);
+
+    saveButton.addEventListener('click', () =>{
+        customerName.textContent = editName.value;
+        issueDescription.textContent = `Issue ${editIssue.value}`
+        priorityLevel.textContent = `Issue ${editPriority.value}`
+    })
+
+    ticketdiv.replaceChild(customerName, editName);
+    ticketdiv.replaceChild(issueDescription, editIssue);
+    ticketdiv.replaceChild(priorityLevel, editPriority);
+    ticketdiv.replaceChild(editButton, saveButton);
+}
+
 //Task 3: Converting NodeLists to Arrays for Bulk Updates
 
 function priorityHigh (){                                           //created a function wtih document.querySelectorAll to select all tickets 
