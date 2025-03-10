@@ -34,9 +34,30 @@ resolveButton.addEventListener('click', (event) => {
 ticketContainer.appendChild(ticketdiv);             
 
 
-}
+
 
 //test data:
 ticket("Edson Barboza", "Keep getting errors", "high")
 ticket("Markus Nguen", "Cannot purchase an item", "medium")
 ticket("Karim Abdul", "Need a driver update", "low")
+
+priorityHigh();
+
+//Task 3: Converting NodeLists to Arrays for Bulk Updates
+
+function priorityHigh (){                                           //created a function wtih document.querySelectorAll to select all tickets 
+    const selectAll = document.querySelectorAll('.ticket-card');
+
+    let array = [...selectAll];         //created an array for the function output
+
+
+    array.forEach(ticket => {           
+        const priorityHighLoop = ticket.querySelector('.priority-level');   //used forEach and querySelector to look for priority-level id
+    
+    //used if statement to look for the priority that is high 
+    if (priorityHighLoop.textContent.toLowerCase().includes("high")){       //utilized .included for to find fot the match in the array 
+        ticket.classList.add('high-priority');                              //all the matches are added to high-priority class      
+
+    }
+});
+}}
