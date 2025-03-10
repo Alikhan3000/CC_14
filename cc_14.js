@@ -27,13 +27,27 @@ resolveButton.setAttribute('class', 'buttonid');
 resolveButton.textContent = "Resolve";
 ticketdiv.append(resolveButton);
 resolveButton.addEventListener('click', (event) => {
+    console.log(`Resolved for: ${customer}`);               //when resolve button is clicked you can see the output in the console
     ticketdiv.remove();
     event.stopPropagation();                            //stopPropagation to stop event bubbling
+});
+
+//Task 4: Implementing Ticket Resolution with Event Bubbling
+ticketdiv.addEventListener('click', (event) => {        //aadded a click event that logs a message when tickets are clicked
+    event.stopPropagation();                        //stopPropagation to stop event bubbling
+    console.log(`${customer} is clicked`);
+
+    
+});
+
+document.getElementById("ticketContainer").addEventListener("click", function(event) {
+    console.log("Ticket container is clicked")
 });
 
 ticketContainer.appendChild(ticketdiv);             
 
 
+}
 
 
 //test data:
@@ -60,4 +74,4 @@ function priorityHigh (){                                           //created a 
 
     }
 });
-}}
+}
